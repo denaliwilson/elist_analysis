@@ -7,8 +7,8 @@
 1. [Executive Summary](#executive-summary)
 2. [Data Overview](#data-overview)
 3. [Analysis](#analysis)
-   - [Q1: Macbook Sales Performance in North America by Quarter](#q1-macbook-sales-performance-in-north-america-by-quarter)
-   - [Q2: Average Delivery Time by Region (Website 2022 & All Mobile)](#q2-average-delivery-time-by-region-website-2022--all-mobile)
+   - [Q1: Macbook Air Laptop Sales Performance by Quarter](#q1-macbook-air-laptop-sales-performance-by-quarter)
+   - [Q2: Average Delivery Time by Region](#q2-average-delivery-time-by-region)
    - [Q3: Refund Rate and Refund Count by Product](#q3-refund-rate-and-refund-count-by-product)
    - [Q4: Most Popular Product by Region](#q4-most-popular-product-by-region)
    - [Q5: Time to Purchase — Loyalty vs. Non-Loyalty Customers](#q5-time-to-purchase--loyalty-vs-non-loyalty-customers)
@@ -18,14 +18,14 @@
 
 ## Executive Summary
 
-> _[2–4 sentence high-level summary of the most important findings across all five analysis areas. Fill in after completing the individual sections.]_
+> Elist generated $6.29M in total Macbook Air revenue across all regions from 2019–2022, with 2020 representing an anomalous demand spike (~5x 2019) driven by pandemic-era device purchases — a peak that has not recovered, with 2022 revenue down 71% from that high. Apple Airpods Headphones is the dominant product globally, ranking #1 in every region by order volume, while laptops (ThinkPad and Macbook Air) carry the highest refund rates at 12% and 11% respectively — more than double the 5% company average. Delivery times are operationally uniform across all four regions (~7.5 days), and loyalty program members demonstrate meaningfully faster time-to-purchase than non-members, a gap that widened in 2022 as overall conversion timelines surged for both groups.
 
 **Key Highlights:**
-- _[Top finding from Q1 — e.g., strongest/weakest Macbook quarter]_
-- _[Top finding from Q2 — e.g., region with longest delivery time]_
-- _[Top finding from Q3 — e.g., product with highest refund rate]_
-- _[Top finding from Q4 — e.g., dominant product across regions]_
-- _[Top finding from Q5 — e.g., loyalty vs. non-loyalty purchase timing gap]_
+- **Q1 — Macbook Air Revenue (All Regions):** 2020 peak of $2.93M (1,843 units) was driven by pandemic demand; by Q4 2022, quarterly revenue had fallen to just $86,564 (68 units) — the weakest quarter in the dataset.
+- **Q2 — Regional Delivery Time:** All regions average ~7.5 days with less than 0.1-day variance between them — delivery time is not a differentiating factor across regions.
+- **Q3 — Refund Rates:** Laptops lead returns: ThinkPad at 12% and Macbook Air at 11%, both far above the 5% average. Samsung Charging Cable Pack returns just 1% — notably low for a high-volume product.
+- **Q4 — Most Popular Product:** Apple Airpods Headphones ranked #1 in all four regions (NA, EMEA, APAC, LATAM), while iPhone and Bose Soundsport consistently ranked last.
+- **Q5 — Loyalty vs. Non-Loyalty:** Loyalty members purchase ~75 days sooner than non-members on average; both groups saw a sharp rise in days-to-purchase through 2022, signaling a broader conversion funnel issue.
 
 ---
 
@@ -52,11 +52,9 @@
 
 ---
 
-### Q1: Macbook Sales Performance in North America by Quarter
+### Q1: Macbook Air Laptop Sales Performance by Quarter
 
-**Question:** What were the order counts, sales, and AOV for Macbooks sold in North America for each quarter across all years?
-
-**Method:** Orders were filtered to the North America region and Macbook product name, then aggregated by quarter across 2019–2022.
+*Macbook Air orders aggregated by quarter across all regions, 2019–2022.*
 
 #### Results
 
@@ -71,15 +69,13 @@
 - **2020 was the peak year by a wide margin**, generating $2.93M in revenue (1,843 units) — nearly 5x 2019's $607K (366 units). This spike aligns with pandemic-driven demand for remote work and e-learning devices.
 - **Revenue declined sharply post-2020**: 2021 fell ~35% to $1.9M, and 2022 fell a further ~55% to $852K, suggesting demand normalization after the pandemic surge.
 - **Q4 2022 was the single weakest quarter across all years** at $86,564 (68 units), indicating continued market contraction heading into the post-analysis period.
-- **Average unit price has trended steadily downward**, dropping from ~$1,749 in Q1 2019 to ~$1,273 in Q4 2022 (~27% decline) — likely reflecting model refreshes, increased market competition, or growing price sensitivity among buyers.
+- **Average unit price declined steadily**, from ~$1,749 (Q1 2019) to ~$1,273 (Q4 2022) — a 27% drop over four years.
 
 ---
 
-### Q2: Average Delivery Time by Region (Website 2022 & All Mobile)
+### Q2: Average Delivery Time by Region
 
-**Question:** For products purchased in 2022 on the website, or products purchased on mobile in any year, which region has the highest average time to deliver?
-
-**Method:** Orders were filtered to (website purchases in 2022) OR (mobile purchases in any year). Average delivery time in days was calculated per region, excluding records with null region values.
+*Average delivery time in days per region, across all years and platforms (null regions excluded).*
 
 #### Results
 
@@ -98,17 +94,14 @@ _Regions ranked from longest to shortest average delivery time. Values are appro
 
 #### Insights
 
-- **Delivery times are remarkably consistent across all four regions**, spanning less than 0.1 days (roughly 2 hours) from the slowest (EMEA at ~7.52 days) to the fastest (APAC at ~7.48 days).
-- Despite EMEA ranking highest, the difference is operationally negligible and unlikely to meaningfully impact customer experience or satisfaction ratings in any single region.
-- The uniformity suggests a standardized global fulfillment pipeline. Since delivery time is not a differentiating factor across regions, future investigation should focus on other logistics quality metrics — such as shipping accuracy, damage rates, or carrier performance — to surface actionable disparities.
+- **All four regions fall within a 0.1-day range** (~7.48–7.52 days) — a difference of roughly 2 hours that is operationally negligible.
+- The uniformity suggests a standardized global fulfillment pipeline. Future investigation should focus on other logistics metrics — shipping accuracy, damage rates, or carrier performance — to surface actionable disparities.
 
 ---
 
 ### Q3: Refund Rate and Refund Count by Product
 
-**Question:** What was the refund rate and refund count for each product overall?
-
-**Method:** All orders were joined to order status records. A refund was flagged when a `refund_ts` timestamp was present. Refund rate is expressed as a percentage of total orders per product.
+*Refund flagged when `refund_ts` was present; refund rate expressed as % of total orders per product.*
 
 #### Results
 
@@ -140,9 +133,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 ### Q4: Most Popular Product by Region
 
-**Question:** Within each region, what is the most popular product?
-
-**Method:** Order counts were aggregated by region and product. Within each region, the product with the highest order count was identified using a row-number window function.
+*Order counts aggregated by region and product; top product per region identified by highest order count.*
 
 #### Results
 
@@ -159,7 +150,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 #### Insights
 
-- **Apple Airpods Headphones is the #1 product in every region** — a clear global bestseller with no regional exceptions, indicating universal brand strength and demand consistency across diverse markets.
+- **Apple Airpods Headphones is the #1 product in every region** with no exceptions — a clear global bestseller.
 - **NA dominates in absolute order volume** (~25K Airpods), roughly 1.7x EMEA (~15K) and over 4x APAC (~5.5K), highlighting North America as the primary revenue driver in this product category.
 - **APAC and LATAM have significantly lower overall order volumes** across all products, which may represent underpenetrated markets and a strategic opportunity for targeted growth campaigns.
 - The **27in 4K Gaming Monitor and Samsung Charging Cable Pack are consistent runners-up** in NA and EMEA, suggesting secondary product demand clusters Elist could amplify through bundling or cross-sell promotions.
@@ -169,16 +160,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 ### Q5: Time to Purchase — Loyalty vs. Non-Loyalty Customers
 
-**Question:** How does the time between account creation and first purchase differ between loyalty program members and non-loyalty customers?
-
-**Method:** The difference between `purchase_ts` and `created_on` was calculated for each order. Results were averaged and grouped by loyalty program status (1 = member, 0 = non-member), excluding null loyalty values.
-
-#### Results
-
-| Loyalty Status | Avg. Days to Purchase | Avg. Months to Purchase |
-|---|---|---|
-| Loyalty Member (1) | | |
-| Non-Member (0) | | |
+*Days between `created_on` and `purchase_ts` averaged by loyalty status (1 = member, 0 = non-member); null loyalty values excluded.*
 
 #### Visualization
 
@@ -186,28 +168,25 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 #### Insights
 
-- **Loyalty program members consistently purchase sooner after account creation than non-members** throughout the entire 2019–2022 period, supporting the program's effectiveness in accelerating purchase intent.
-- **Both groups show a sharp and accelerating increase in days-to-purchase starting in mid-2021**, with the trend steepening dramatically in 2022 — non-loyalty customers reaching ~400 days-to-purchase and loyalty members ~325 days by late 2022. This likely reflects macroeconomic headwinds (e.g., inflation, post-COVID consumer pullback) causing broader hesitation.
-- **The gap between groups widened in 2022**, with loyalty members still purchasing ~75 days sooner than non-members at the end of the period. This growing spread suggests the loyalty program is providing an increasingly meaningful engagement buffer as general market conditions deteriorate.
-- The steep 2022 trend for both cohorts warrants further investigation — if customers are taking 300–400 days from signup to first purchase, that signals a significant leak in the acquisition-to-conversion funnel that targeted onboarding or time-limited offer campaigns could address.
+- **Both groups show a sharp increase in days-to-purchase starting mid-2021**, steepening dramatically in 2022 — non-loyalty customers reaching ~400 days and loyalty members ~325 days by late 2022, likely reflecting post-COVID macroeconomic headwinds.
+- **The gap between groups widened in 2022**, with loyalty members purchasing ~75 days sooner than non-members — suggesting the program provides an increasingly meaningful engagement buffer as market conditions deteriorate.
+- The steep 2022 trend warrants further investigation: customers taking 300–400 days from signup to first purchase signals a significant acquisition-to-conversion leak that onboarding campaigns or time-limited offers could address.
 
 ---
 
 ## Conclusion & Recommended Next Steps
 
-### Summary of Findings
-
-> _[3–5 sentence synthesis connecting findings across all five questions. Highlight the most actionable patterns.]_
+Five findings drive the following recommendations:
 
 ### Recommended Next Steps
 
 | Priority | Recommendation | Supporting Finding |
 |---|---|---|
-| High | _[e.g., Investigate high refund rate for [product]]_ | _[Q3 — refund rate data]_ |
-| High | _[e.g., Audit logistics pipeline for [region] to reduce delivery time]_ | _[Q2 — delivery time data]_ |
-| Medium | _[e.g., Expand Macbook North America marketing during peak quarter]_ | _[Q1 — seasonal trends]_ |
-| Medium | _[e.g., Develop regional promotions based on top products per region]_ | _[Q4 — regional popularity]_ |
-| Low | _[e.g., Create onboarding campaigns to accelerate non-loyalty time-to-purchase]_ | _[Q5 — purchase timing gap]_ |
+| High | Investigate root causes of elevated laptop return rates — survey returned-product reasons, review QA/fulfillment processes, and assess whether ThinkPad NA (14% refund rate) warrants a supplier or logistics audit | Q3 — ThinkPad 12%, Macbook Air 11% refund rates; ThinkPad NA highest at 14% |
+| High | Launch targeted re-engagement campaigns (time-limited offers, onboarding sequences) for new account holders who have not purchased within 90 days, prioritizing non-loyalty customers | Q5 — Non-loyalty customers averaging 400+ days-to-purchase by late 2022 |
+| Medium | Develop a loyalty program acquisition push: the program demonstrably accelerates purchase timing (~75-day gap vs. non-members), and expanding enrollment could offset the broad conversion slowdown observed in 2022 | Q5 — Loyalty members consistently purchase sooner; gap widened in 2022 |
+| Medium | Invest in Airpods marketing and inventory in APAC and LATAM, where order volumes are a fraction of NA/EMEA despite the same #1 product ranking — these regions represent underpenetrated growth opportunities | Q4 — Airpods #1 globally but APAC (~5.5K) and LATAM (~2.5K) lag NA (~25K) significantly |
+| Low | Evaluate Macbook Air pricing strategy: the 27% AOV decline from 2019 to 2022 suggests eroding price positioning — consider whether promotional discounting is cannibalizing margin or if a product-mix shift toward newer models is needed | Q1 — Average unit price fell from ~$1,749 (Q1 2019) to ~$1,273 (Q4 2022) |
 
 ---
 
