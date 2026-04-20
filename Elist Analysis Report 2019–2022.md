@@ -68,9 +68,10 @@
 
 #### Insights
 
-- _[Seasonal trends — e.g., does Q4 consistently outperform other quarters?]_
-- _[Year-over-year growth or decline in Macbook NA sales]_
-- _[Notable spikes or dips and potential explanations]_
+- **2020 was the peak year by a wide margin**, generating $2.93M in revenue (1,843 units) — nearly 5x 2019's $607K (366 units). This spike aligns with pandemic-driven demand for remote work and e-learning devices.
+- **Revenue declined sharply post-2020**: 2021 fell ~35% to $1.9M, and 2022 fell a further ~55% to $852K, suggesting demand normalization after the pandemic surge.
+- **Q4 2022 was the single weakest quarter across all years** at $86,564 (68 units), indicating continued market contraction heading into the post-analysis period.
+- **Average unit price has trended steadily downward**, dropping from ~$1,749 in Q1 2019 to ~$1,273 in Q4 2022 (~27% decline) — likely reflecting model refreshes, increased market competition, or growing price sensitivity among buyers.
 
 ---
 
@@ -84,22 +85,22 @@
 
 | Region | Avg. Delivery Time (Days) |
 |---|---|
-| | |
-| | |
-| | |
-| | |
+| EMEA | ~7.52 |
+| NA | ~7.50 |
+| LATAM | ~7.49 |
+| APAC | ~7.48 |
 
-_Regions ranked from longest to shortest average delivery time._
+_Regions ranked from longest to shortest average delivery time. Values are approximate as read from the visualization._
 
 #### Visualization
 
-> _[Insert Power BI bar chart here — recommended: horizontal bar chart ranked by average delivery time, colored by region]_
+![](images/Elist_Q2_Regional_Delivery_Time.png)
 
 #### Insights
 
-- _[Which region has the longest average delivery time and by how much?]_
-- _[Are there operational or logistical factors that may explain regional disparities?]_
-- _[How does mobile vs. website channel mix differ by region, and could that influence the result?]_
+- **Delivery times are remarkably consistent across all four regions**, spanning less than 0.1 days (roughly 2 hours) from the slowest (EMEA at ~7.52 days) to the fastest (APAC at ~7.48 days).
+- Despite EMEA ranking highest, the difference is operationally negligible and unlikely to meaningfully impact customer experience or satisfaction ratings in any single region.
+- The uniformity suggests a standardized global fulfillment pipeline. Since delivery time is not a differentiating factor across regions, future investigation should focus on other logistics quality metrics — such as shipping accuracy, damage rates, or carrier performance — to surface actionable disparities.
 
 ---
 
@@ -111,28 +112,29 @@ _Regions ranked from longest to shortest average delivery time._
 
 #### Results
 
-| Product | Total Orders | Refund Count | Refund Rate (%) |
-|---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Product | Refund Rate (%) |
+|---|---|
+| ThinkPad Laptop | 12% |
+| Macbook Air Laptop | 11% |
+| Apple iPhone | 8% |
+| 27in 4K Gaming Monitor | 6% |
+| Apple Airpods Headphones | 5% |
+| Samsung Webcam | 3% |
+| Samsung Charging Cable Pack | 1% |
+| Bose Soundsport Headphones | 0% |
 
-_Products sorted by refund rate (high to low)._
+_Products sorted by refund rate (high to low). Overall refund rate across all products: 5%. Total order counts and absolute refund counts not captured in this visualization._
 
 #### Visualization
 
-> _[Insert Power BI bar chart here — recommended: sorted bar chart of refund rate by product, with a secondary data label showing refund count]_
+![](images/Elist_Q3_Product_Region_Refunds.png)
 
 #### Insights
 
-- _[Which product has the highest refund rate? Is volume a contributing factor?]_
-- _[Which product has the highest absolute refund count?]_
-- _[Are there products with a low refund rate that suggest strong customer satisfaction?]_
+- **Laptops lead in refund rate**: ThinkPad Laptop (12%) and Macbook Air Laptop (11%) are the top two highest-refund products, significantly above the overall 5% average — likely driven by the high unit price raising customer scrutiny, or technical issues unique to laptop use cases.
+- **ThinkPad refunds are disproportionately high in NA (14%)**, suggesting a potential regional product-fit or fulfillment issue worth investigating in that market specifically.
+- **Bose Soundsport Headphones had a 0% refund rate** across all four regions, and Samsung Charging Cable Pack logged just 1% — both low-ticket items — suggesting price point is inversely correlated with refund likelihood.
+- The overall company refund rate of 5% is consistent across APAC, EMEA, and NA, with LATAM slightly lower at 4%, pointing to no major outlier regions but a clear outlier product category (laptops).
 
 ---
 
@@ -146,20 +148,22 @@ _Products sorted by refund rate (high to low)._
 
 | Region | Most Popular Product | Order Count |
 |---|---|---|
-| NA | | |
-| EMEA | | |
-| APAC | | |
-| LATAM | | |
+| NA | Apple Airpods Headphones | ~25,000 |
+| EMEA | Apple Airpods Headphones | ~15,000 |
+| APAC | Apple Airpods Headphones | ~5,500 |
+| LATAM | Apple Airpods Headphones | ~2,500 |
 
 #### Visualization
 
-> _[Insert Power BI visualization here — recommended: grouped bar chart or map visual showing top product per region]_
+![](images/Elist_Q4_Regional_Product_Sales.png)
 
 #### Insights
 
-- _[Is there a single product that dominates across multiple regions?]_
-- _[Are there regional preferences that suggest localized demand or marketing opportunities?]_
-- _[How large is the order count gap between the #1 and #2 product in each region?]_
+- **Apple Airpods Headphones is the #1 product in every region** — a clear global bestseller with no regional exceptions, indicating universal brand strength and demand consistency across diverse markets.
+- **NA dominates in absolute order volume** (~25K Airpods), roughly 1.7x EMEA (~15K) and over 4x APAC (~5.5K), highlighting North America as the primary revenue driver in this product category.
+- **APAC and LATAM have significantly lower overall order volumes** across all products, which may represent underpenetrated markets and a strategic opportunity for targeted growth campaigns.
+- The **27in 4K Gaming Monitor and Samsung Charging Cable Pack are consistent runners-up** in NA and EMEA, suggesting secondary product demand clusters Elist could amplify through bundling or cross-sell promotions.
+- **iPhone and Bose Soundsport Headphones rank at the bottom of every region**, signaling either weak market positioning, pricing issues, or insufficient marketing investment in these SKUs.
 
 ---
 
@@ -178,13 +182,14 @@ _Products sorted by refund rate (high to low)._
 
 #### Visualization
 
-> _[Insert Power BI visualization here — recommended: side-by-side bar chart or KPI cards comparing average days to purchase]_
+![](images/Elist_Q5_Loyalty_Time_to_Sale.png)
 
 #### Insights
 
-- _[Do loyalty members purchase faster or slower after account creation?]_
-- _[What does a longer/shorter time-to-purchase suggest about customer intent or engagement?]_
-- _[Are there opportunities to shorten time-to-purchase for non-loyalty customers through targeted campaigns?]_
+- **Loyalty program members consistently purchase sooner after account creation than non-members** throughout the entire 2019–2022 period, supporting the program's effectiveness in accelerating purchase intent.
+- **Both groups show a sharp and accelerating increase in days-to-purchase starting in mid-2021**, with the trend steepening dramatically in 2022 — non-loyalty customers reaching ~400 days-to-purchase and loyalty members ~325 days by late 2022. This likely reflects macroeconomic headwinds (e.g., inflation, post-COVID consumer pullback) causing broader hesitation.
+- **The gap between groups widened in 2022**, with loyalty members still purchasing ~75 days sooner than non-members at the end of the period. This growing spread suggests the loyalty program is providing an increasingly meaningful engagement buffer as general market conditions deteriorate.
+- The steep 2022 trend for both cohorts warrants further investigation — if customers are taking 300–400 days from signup to first purchase, that signals a significant leak in the acquisition-to-conversion funnel that targeted onboarding or time-limited offer campaigns could address.
 
 ---
 
