@@ -4,12 +4,7 @@
 SELECT MIN(purchase_ts), MAX(purchase_ts)
 FROM core.orders;
 
---2. What is the average order value for purchases made in USD? What about average order value for purchases made in USD in 2019?
-SELECT AVG(usd_price)
-FROM core.orders
-WHERE (DATE_TRUNC(purchase_ts, year) = '2019-01-01');
-
---3. Return the id, loyalty program status, and account creation date for customers who made an account on desktop or mobile. Rename the columns to more descriptive names.
+--2. Return the id, loyalty program status, and account creation date for customers who made an account on desktop or mobile. Rename the columns to more descriptive names.
 SELECT id `User ID`, 
        loyalty_program `Loyalty Program Members`,
        created_on `Account Creation Date`
@@ -17,19 +12,12 @@ FROM core.customers
 WHERE (account_creation_method = 'desktop'  OR account_creation_method = 'mobile');
 
 
---4. What are all the unique products that were sold in AUD on website, sorted alphabetically?
+--3. What are all the unique products that were sold in AUD on website, sorted alphabetically?
 SELECT DISTINCT product_name `Product Name`
 FROM core.orders
 WHERE currency='AUD'
 ORDER BY product_name;
 
-
---5. What are the first 10 countries in the North American region, sorted in descending alphabetical order?
-SELECT DISTINCT country_code `Country Code`
-FROM core.geo_lookup
-WHERE region='NA'
-ORDER BY country_code DESC
-LIMIT 10;
 
 --Second set of exploratory questions:
 
@@ -54,17 +42,6 @@ FROM core.order_status
 ORDER BY 1
 LIMIT 20;
 
---4. Return the product IDs and product names of all Apple products.
-SELECT product_name, product_id
-FROM core.orders 
-WHERE product_name LIKE '%Apple%' OR product_name LIKE '%Mac%'
-GROUP BY 1,2;
-
---5. Calculate the time to ship in days for each order and return all original columns from the table.
-SELECT *,
-      (delivery_ts - ship_ts) AS `Shipping Time`
-FROM `core.order_status`;
-
 --Challenge Questions for practice
 
 --1. What is the refund rate per year, expressed as a percent (i.e. 0.0445 should be shown as 44.5)? Can you round this to 2 decimals? 
@@ -84,13 +61,6 @@ WHERE purchase_ts IS NOT NULL
 GROUP BY 1, 2
 ORDER BY 1;
 
-
---3. What is the average order value per year for products that are either laptops or headphones? Round this to 2 decimals.
-SELECT DATE_TRUNC(purchase_ts, year),
-       ROUND(AVG(usd_price), 2)
-FROM `core.orders`
-WHERE product_name LIKE '%Laptop%' OR product_name LIKE '%eadphone%'
-GROUP BY 1;
 
 --Actual Stakeholder Questions
 --1) What were the order counts, sales, and AOV for Macbooks sold in North America for each quarter across all years?
@@ -168,3 +138,51 @@ LEFT JOIN core.orders
 ON customers.id = orders.customer_id
 WHERE customers.loyalty_program IS NOT NULL
 GROUP BY 1;
+
+
+--Advanced Queries
+
+--6) What is the quarter-over-quarter revenue change for Macbook Air across all regions?
+WITH quarterly_revenue AS (
+  SELECT DATE_TRUNC(purchase_ts, quarter) AS purchase_qtr,
+         SUM(usd_price) AS total_revenue
+  FROM core.orders
+  WHERE LOWER(product_name) LIKE '%macbook%'
+  GROUP BY 1
+)
+
+SELECT purchase_qtr,
+       total_revenue,
+       LAG(total_revenue) OVER (ORDER BY purchase_qtr) AS prev_qtr_revenue,
+       ROUND(
+         (total_revenue - LAG(total_revenue) OVER (ORDER BY purchase_qtr))
+         / LAG(total_revenue) OVER (ORDER BY purchase_qtr) * 100, 2
+       ) AS qoq_change_pct
+FROM quarterly_revenue
+ORDER BY 1;
+
+
+--7) Which products have a refund rate above the overall company average?
+SELECT CASE WHEN orders.product_name = '27in"" 4k gaming monitor' THEN '27in 4K gaming monitor'
+            ELSE orders.product_name END AS product_name,
+       ROUND(AVG(CASE WHEN order_status.refund_ts IS NULL THEN 0 ELSE 1 END) * 100, 2) AS refund_rate_pct
+FROM core.orders
+LEFT JOIN core.order_status
+  ON orders.id = order_status.order_id
+GROUP BY 1
+HAVING AVG(CASE WHEN order_status.refund_ts IS NULL THEN 0 ELSE 1 END) >
+  (SELECT AVG(CASE WHEN refund_ts IS NULL THEN 0 ELSE 1 END) FROM core.order_status)
+ORDER BY 2 DESC;
+
+
+--8) What is the total order count and revenue per region, using COALESCE to bucket unmatched countries as 'Unknown'?
+SELECT COALESCE(geo_lookup.region, 'Unknown') AS region,
+       COUNT(*) AS order_count,
+       ROUND(SUM(orders.usd_price), 2) AS total_revenue
+FROM core.orders
+LEFT JOIN core.customers
+  ON orders.customer_id = customers.id
+LEFT JOIN core.geo_lookup
+  ON customers.country_code = geo_lookup.country_code
+GROUP BY 1
+ORDER BY 3 DESC;
