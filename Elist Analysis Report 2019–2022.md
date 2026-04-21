@@ -18,7 +18,7 @@
 
 ## Executive Summary
 
-> Elist generated $6.29M in total Macbook Air revenue across all regions from 2019–2022, with 2020 representing an anomalous demand spike (~5x 2019) driven by pandemic-era device purchases — a peak that has not recovered, with 2022 revenue down 71% from that high. Apple Airpods Headphones is the dominant product globally, ranking #1 in every region by order volume, while laptops (ThinkPad and Macbook Air) carry the highest refund rates at 12% and 11% respectively — more than double the 5% company average. Delivery times are operationally uniform across all four regions (~7.5 days), and loyalty program members demonstrate meaningfully faster time-to-purchase than non-members, a gap that widened in 2022 as overall conversion timelines surged for both groups.
+Elist is a global e-commerce retailer specializing in consumer electronics, selling eight products across North America, EMEA, APAC, and Latin America through website and mobile platforms. This analysis examines four years of transaction data (2019–2022) to surface trends in sales performance, regional demand, product returns, fulfillment, and loyalty program effectiveness — with the goal of identifying actionable opportunities across Elist's commercial and operational functions.
 
 **Key Highlights:**
 - **Q1 — Macbook Air Revenue (All Regions):** 2020 peak of $2.93M (1,843 units) was driven by pandemic demand; by Q4 2022, quarterly revenue had fallen to just $86,564 (68 units) — the weakest quarter in the dataset.
@@ -58,11 +58,11 @@
 
 #### Results
 
-![](images/Elist_Q1_Macbook_Table.png)
+![](Images/Elist_Q1_Macbook_Table.png)
 
 #### Visualization
 
-![](images/Elist_Q1_Macbook_Graph.png)
+![](Images/Elist_Q1_Macbook_Graph.png)
 
 #### Insights
 
@@ -90,7 +90,7 @@ _Regions ranked from longest to shortest average delivery time. Values are appro
 
 #### Visualization
 
-![](images/Elist_Q2_Regional_Delivery_Time.png)
+![](Images/Elist_Q2_Regional_Delivery_Time.png)
 
 #### Insights
 
@@ -120,7 +120,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 #### Visualization
 
-![](images/Elist_Q3_Product_Region_Refunds.png)
+![](Images/Elist_Q3_Product_Region_Refunds.png)
 
 #### Insights
 
@@ -146,7 +146,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 #### Visualization
 
-![](images/Elist_Q4_Regional_Product_Sales.png)
+![](Images/Elist_Q4_Regional_Product_Sales.png)
 
 #### Insights
 
@@ -164,7 +164,7 @@ _Products sorted by refund rate (high to low). Overall refund rate across all pr
 
 #### Visualization
 
-![](images/Elist_Q5_Loyalty_Time_to_Sale.png)
+![](Images/Elist_Q5_Loyalty_Time_to_Sale.png)
 
 #### Insights
 
