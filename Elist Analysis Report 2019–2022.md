@@ -152,7 +152,8 @@ Though 0% return for the headphones is encouraging, this is entirely attributabl
 
 #### Visualization
 
-![](Images/Elist_Q4_Regional_Product_Sales.png)
+![](Images/Elist_Q2_Global_Products.png)
+
 
 #### Insights
 
